@@ -95,4 +95,4 @@ Manually clears all tracking side effects bound to this signal instance (useful 
 
 ## 📄 License
 
-This project is open-source and licensed under the **MIT License**. See the [LICENSE](./LICENSE.txt) file for more details.
+This project is open-source and licensed under the **MIT License**.
