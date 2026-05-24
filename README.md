@@ -6,6 +6,8 @@ A simple addon to make UI / Game Logic reactive in Godot 4.x (GDScript).
 
 Inspired by the signal/reactive systems in modern frontend frameworks (like React, Vue, and SolidJS).
 
+![](images/example_code.png)
+
 ## ✨ Features
 
 * **True Reactivity**: No need to manually connect or emit signals. Simply access data inside `use_effect`, and the dependency tracking is automatically handled.
