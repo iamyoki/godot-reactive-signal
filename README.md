@@ -1,6 +1,8 @@
+<img src="icon.png" width="128" />
+
 # ReactiveSignal
 
-A simple addon to make UI / Game Logic reactive in Godot 4.x (GDSCript).
+A simple addon to make UI / Game Logic reactive in Godot 4.x (GDScript).
 
 Inspired by the signal/reactive systems in modern frontend frameworks (like React, Vue, and SolidJS).
 
