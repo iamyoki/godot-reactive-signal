@@ -34,3 +34,19 @@ func _init(initial_value) -> void:
 
 func clear_effects():
 	_effects.clear()
+
+## Evaluate other signals as a signal
+##[br]
+##[codeblock]
+##var first_name = ReactiveSignal.new('John')
+##var last_name = ReactiveSignal.new('Doe')
+##var full_name = ReactiveSignal.computed(func(): return first_name + last_name)
+###[full_name] changes dependes on [first_name] or [last_name] changes 
+##[/codeblock]
+static func computed(getter_func: Callable) -> ReactiveSignal:
+	var computed_signal = ReactiveSignal.new(null)
+	ReactiveSignal.use_effect(func():
+		computed_signal.value = getter_func.call()
+	)
+	
+	return computed_signal

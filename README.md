@@ -26,17 +26,17 @@ Use `use_effect` to track and respond to data changes automatically:
 extends Node
 
 func _ready() -> void:
-    # 1. Create a reactive signal
-    var score = ReactiveSignal.new(0)
-    
-    # 2. Define a side effect (automatically runs whenever score.value changes)
-    ReactiveSignal.use_effect(func():
-        print("Current Score: ", score.value)
-    ) # Prints: "Current Score: 0"
-    
-    # 3. Modify the data, which automatically triggers updates
-    score.value = 10  # Prints: "Current Score: 10"
-    score.value = 10  # Value unchanged, won't trigger
+	# 1. Create a reactive signal
+	var score = ReactiveSignal.new(0)
+	
+	# 2. Define a side effect (automatically runs whenever score.value changes)
+	ReactiveSignal.use_effect(func():
+		print("Current Score: ", score.value)
+	) # Prints: "Current Score: 0"
+	
+	# 3. Modify the data, which automatically triggers updates
+	score.value = 10  # Prints: "Current Score: 10"
+	score.value = 10  # Value unchanged, won't trigger
     score.value = 25  # Prints: "Current Score: 25"
 
 ```
@@ -64,6 +64,46 @@ func _ready() -> void:
 func _on_damage_taken(amount: int) -> void:
     player_hp.value -= amount # UI updates automatically! No need to manually assign Label.text
 
+```
+
+### 3. Computed Signal
+
+Evaluating other signals to a new signal. General speaking, if
+a signal `C` is computed from signals `A+B` then any changes from `A` or `B` will automatically updates signal `C`.
+
+Example:
+
+![](images/example_computed.gif)
+
+```gdscript
+var first_name = ReactiveSignal.new('')
+var last_name = ReactiveSignal.new('')
+var full_name = ReactiveSignal.computed(func(): 
+	return first_name.value + ' ' + last_name.value
+)
+var intro = ReactiveSignal.computed(func():
+	return 'My name is: %s' % full_name.value)
+
+func _ready() -> void:
+	# Bind the ui native event signals to our ReactiveSignals
+	first_name_input.text_changed.connect(func(new_text): first_name.value = new_text)
+	last_name_input.text_changed.connect(func(new_text): last_name.value = new_text)
+
+	# Runs on intro value changed
+	ReactiveSignal.use_effect(func():
+		intro_label.text = intro.value
+	)
+
+	# Runs on first_name or last_name value changed
+	ReactiveSignal.use_effect(func():
+		var deps = [first_name.value, last_name.value]
+		if not deps[0]:
+			warning_label.text = 'First name should not be empty'
+		elif not deps[1]:
+			warning_label.text = 'Last name should not be empty'
+		else:
+			warning_label.text = ''
+	)
 ```
 
 ---

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bxj7kk7j6upi8"]
+
+[ext_resource type="Script" uid="uid://ucb1hwk4qak3" path="res://examples/3_computed.gd" id="1_c3ann"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c3ann"]
+font_color = Color(0.80187446, 0.16049322, 0.17237118, 1)
+outline_size = 6
+
+[node name="3_computed" type="Control" unique_id=19608078]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c3ann")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=399819792]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -20.0
+offset_right = 117.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FirstName" type="LineEdit" parent="HBoxContainer" unique_id=1925057094]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "FirstName"
+
+[node name="LastName" type="LineEdit" parent="HBoxContainer" unique_id=1512615618]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "LastName"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1798209104]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5800781
+anchor_right = 0.5
+anchor_bottom = 0.5800781
+offset_left = -122.5
+offset_right = 122.5
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="Intro" type="Label" parent="VBoxContainer" unique_id=84615226]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "My name is: "
+
+[node name="Warning" type="Label" parent="VBoxContainer" unique_id=24014834]
+layout_mode = 2
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_c3ann")

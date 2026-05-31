@@ -12,7 +12,7 @@ config_version=5
 
 config/name="ReactiveSignal"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="uid://567t2qrq5fwf"
+config/icon="uid://cu442xf03e500"
 
 [display]
 
